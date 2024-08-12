@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b54ha8ps4qtx7"]
+
+[node name="Arena" type="Sprite2D"]
