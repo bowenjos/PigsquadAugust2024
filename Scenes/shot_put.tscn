@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://r66rhh3nkxrp"]
+
+[ext_resource type="Shape2D" uid="uid://5it1bs7ghr4n" path="res://Art/ShotPutBall.tres" id="1_7at11"]
+
+[node name="ShotPut" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("1_7at11")
