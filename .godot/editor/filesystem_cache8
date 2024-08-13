@@ -1,4 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1723423618
+::res://::1723506504
 icon.svg::CompressedTexture2D::8865839036063323768::1723423596::1723423600::1::::<><>::
-::res://Scenes/::1723423618
+::res://Art/::1723506136
+ForestBackground.png::CompressedTexture2D::6393998454976940507::1723507367::1723507368::1::::<><>::
+::res://Scenes/::1723506510
+arena.tscn::PackedScene::4552379723951035338::1723506510::0::1::::<><>::uid://cxdkhq004l100::::res://Art/ForestBackground.png

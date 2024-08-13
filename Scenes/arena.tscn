@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://b54ha8ps4qtx7"]
+[gd_scene load_steps=3 format=3 uid="uid://b54ha8ps4qtx7"]
+
+[ext_resource type="Texture2D" uid="uid://cxdkhq004l100" path="res://Art/ForestBackground.png" id="1_mbqxg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk53u"]
+size = Vector2(640, 90)
 
 [node name="Arena" type="Sprite2D"]
+texture = ExtResource("1_mbqxg")
+offset = Vector2(320, 240)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Node2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(320, 430)
+shape = SubResource("RectangleShape2D_fk53u")
