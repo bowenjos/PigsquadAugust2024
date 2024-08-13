@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://detg57w1ysds8"]
+
+[ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_ah28k"]
+[ext_resource type="Texture2D" uid="uid://kswsb0xkeaw7" path="res://Art/ShotputStart.png" id="1_l10wb"]
+[ext_resource type="PackedScene" uid="uid://b54ha8ps4qtx7" path="res://Scenes/arena.tscn" id="2_wwqv8"]
+[ext_resource type="PackedScene" uid="uid://r66rhh3nkxrp" path="res://Scenes/shot_put.tscn" id="3_7735l"]
+[ext_resource type="Script" path="res://StartingZone.gd" id="4_w2wv6"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_ah28k")
+
+[node name="Arena" parent="." instance=ExtResource("2_wwqv8")]
+
+[node name="Arena2" parent="." instance=ExtResource("2_wwqv8")]
+position = Vector2(640, 0)
+
+[node name="Arena3" parent="." instance=ExtResource("2_wwqv8")]
+position = Vector2(1280, 0)
+
+[node name="StartingZone" type="Sprite2D" parent="."]
+texture = ExtResource("1_l10wb")
+offset = Vector2(320, 240)
+script = ExtResource("4_w2wv6")
+
+[node name="ShotPut" parent="." instance=ExtResource("3_7735l")]
+position = Vector2(314, 350)

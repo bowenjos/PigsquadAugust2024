@@ -1,3 +1,8 @@
 res://Scenes/shot_put.tscn
-res://Art/ShotPutBall.tres
+res://Scripts/ShotPut.gd
 res://Scenes/arena.tscn
+res://Scenes/GameScene.tscn
+res://GameController.gd
+res://Scripts/GameController.gd
+res://BackGround.gd
+res://StartingZone.gd
