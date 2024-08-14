@@ -13,3 +13,5 @@ shape = ExtResource("1_7at11")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_qxc61")
+
+[node name="Camera2D" type="Camera2D" parent="."]

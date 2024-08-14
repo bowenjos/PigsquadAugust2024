@@ -1,8 +1,4 @@
-res://Scenes/shot_put.tscn
-res://Scripts/ShotPut.gd
-res://Scenes/arena.tscn
 res://Scenes/GameScene.tscn
-res://GameController.gd
+res://Scenes/arena.tscn
+res://Scenes/shot_put.tscn
 res://Scripts/GameController.gd
-res://BackGround.gd
-res://StartingZone.gd
