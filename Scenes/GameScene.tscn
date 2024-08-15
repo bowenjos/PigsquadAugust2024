@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://detg57w1ysds8"]
+[gd_scene load_steps=22 format=3 uid="uid://detg57w1ysds8"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_ah28k"]
 [ext_resource type="Texture2D" uid="uid://kswsb0xkeaw7" path="res://Art/ShotputStart.png" id="1_l10wb"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://cyse4at0chsg3" path="res://Art/Sky11.png" id="17_1h1sc"]
 [ext_resource type="Texture2D" uid="uid://dtfhfixwy3s73" path="res://Art/Sky12.png" id="18_xan2x"]
 [ext_resource type="Texture2D" uid="uid://dhal1xxk2qu7q" path="res://Art/Sky13.png" id="19_rc0yk"]
+[ext_resource type="Texture2D" uid="uid://7fjg3rm24s7b" path="res://Art/BionicArm.png" id="20_2xq50"]
+[ext_resource type="Texture2D" uid="uid://duyofvvt6ay7v" path="res://Art/ShotBot.png" id="21_lo4on"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_ah28k")
@@ -39,6 +41,7 @@ script = ExtResource("4_w2wv6")
 [node name="ShotPut" parent="." instance=ExtResource("3_7735l")]
 z_index = 1
 position = Vector2(314, 350)
+freeze = true
 
 [node name="BackgroundHolder" type="Node2D" parent="."]
 
@@ -262,3 +265,12 @@ position = Vector2(1280, 0)
 texture = ExtResource("19_rc0yk")
 offset = Vector2(320, -6000)
 script = ExtResource("7_0fyyp")
+
+[node name="BionicArm" type="Sprite2D" parent="."]
+position = Vector2(339, 392)
+texture = ExtResource("20_2xq50")
+
+[node name="ShotBot" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(301, 359)
+texture = ExtResource("21_lo4on")

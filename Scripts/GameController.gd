@@ -4,7 +4,8 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ShotPut.launch(Vector2(2400, -236000))
+	#$ShotPut.launch(Vector2(2400, -236000))
+	pass
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

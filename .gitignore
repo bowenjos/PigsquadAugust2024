@@ -13,3 +13,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+.godot/editor/arena.tscn-editstate-89be3d629663e38055291e0127327462.cfg
+.godot/editor/create_recent.Node
+.godot/editor/filesystem_cache8
+.godot/editor/filesystem_update4
+.godot/editor/shot_put.tscn-editstate-a34cc84305bb514fe271ec136ba11bf3.cfg
+.godot/uid_cache.bin
