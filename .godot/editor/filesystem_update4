@@ -1,8 +1,0 @@
-res://Scenes/InputArrow.tscn
-res://StartingZone.gd
-res://Scripts/Player.gd
-res://Scripts/Arrow.gd
-res://Scenes/Player.tscn
-res://Scenes/arena.tscn
-res://Scenes/shot_put.tscn
-res://Scenes/GameScene.tscn

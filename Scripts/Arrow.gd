@@ -22,9 +22,9 @@ func shuffle():
 	elif(direction == 1):
 		self.rotation = PI
 	elif(direction == 2):
-		self.rotation = PI/2
-	elif(direction == 3):
 		self.rotation = -PI/2
+	elif(direction == 3):
+		self.rotation = PI/2
 		
 func correct():
 	self.texture = load("res://Art/ArrowGreen.png")
