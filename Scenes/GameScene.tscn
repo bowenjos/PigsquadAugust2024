@@ -40,7 +40,6 @@ script = ExtResource("4_s8yry")
 [node name="ShotPut" parent="." instance=ExtResource("3_7735l")]
 z_index = 1
 position = Vector2(314, 350)
-freeze = true
 
 [node name="BackgroundHolder" type="Node2D" parent="."]
 
@@ -271,5 +270,5 @@ texture = ExtResource("20_2xq50")
 
 [node name="ShotBot" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(301, 359)
+position = Vector2(301, 335)
 texture = ExtResource("21_lo4on")

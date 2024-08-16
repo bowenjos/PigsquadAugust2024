@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://creiv4sk24104"]
+
+[ext_resource type="Texture2D" uid="uid://cdit3fakswh2b" path="res://Art/ShotBotArm.png" id="1_jtk6b"]
+
+[node name="Node2D" type="Sprite2D"]
+rotation = -0.359538
+texture = ExtResource("1_jtk6b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
