@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://mgvjefhwpi7c"]
+[gd_scene load_steps=6 format=3 uid="uid://mgvjefhwpi7c"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_d4bdc"]
 [ext_resource type="PackedScene" uid="uid://d1kfnderm0gp7" path="res://Scenes/InputArrow.tscn" id="1_x0wry"]
 [ext_resource type="Texture2D" uid="uid://7fjg3rm24s7b" path="res://Art/BionicArm.png" id="2_hhbbw"]
+[ext_resource type="Texture2D" uid="uid://dywu1ptjnv85h" path="res://Art/ShotBotCharging.png" id="4_wuvhk"]
+[ext_resource type="Texture2D" uid="uid://cdit3fakswh2b" path="res://Art/ShotBotArm.png" id="5_on4yx"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_d4bdc")
@@ -22,3 +24,11 @@ position = Vector2(332, 540)
 
 [node name="InputArrow4" parent="." instance=ExtResource("1_x0wry")]
 position = Vector2(435, 539)
+
+[node name="ShotBot" type="Sprite2D" parent="."]
+position = Vector2(300, 240)
+texture = ExtResource("4_wuvhk")
+
+[node name="ShotBotArm" type="Sprite2D" parent="."]
+texture = ExtResource("5_on4yx")
+offset = Vector2(305, 215)
