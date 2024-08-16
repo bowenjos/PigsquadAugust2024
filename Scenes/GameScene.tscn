@@ -1,12 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://detg57w1ysds8"]
+[gd_scene load_steps=20 format=3 uid="uid://detg57w1ysds8"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_ah28k"]
 [ext_resource type="Texture2D" uid="uid://kswsb0xkeaw7" path="res://Art/ShotputStart.png" id="1_l10wb"]
 [ext_resource type="PackedScene" uid="uid://b54ha8ps4qtx7" path="res://Scenes/arena.tscn" id="2_wwqv8"]
 [ext_resource type="PackedScene" uid="uid://r66rhh3nkxrp" path="res://Scenes/shot_put.tscn" id="3_7735l"]
-[ext_resource type="Script" path="res://StartingZone.gd" id="4_w2wv6"]
 [ext_resource type="Texture2D" uid="uid://byv0gd8tnb885" path="res://Art/Sky1.png" id="6_w7oyl"]
-[ext_resource type="Script" path="res://BackGround.gd" id="7_0fyyp"]
 [ext_resource type="Texture2D" uid="uid://ptfds5xc28ac" path="res://Art/Sky2.png" id="8_d41h0"]
 [ext_resource type="Texture2D" uid="uid://d26okojr8sum0" path="res://Art/Sky3.png" id="9_yrmrf"]
 [ext_resource type="Texture2D" uid="uid://rbf7f2wuk77n" path="res://Art/Sky4.png" id="10_peih6"]
@@ -36,7 +34,6 @@ position = Vector2(1280, 0)
 [node name="StartingZone" type="Sprite2D" parent="."]
 texture = ExtResource("1_l10wb")
 offset = Vector2(320, 240)
-script = ExtResource("4_w2wv6")
 
 [node name="ShotPut" parent="." instance=ExtResource("3_7735l")]
 z_index = 1
@@ -48,223 +45,184 @@ freeze = true
 [node name="Sky1_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("6_w7oyl")
 offset = Vector2(320, -240)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky1_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("6_w7oyl")
 offset = Vector2(320, -240)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky1_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("6_w7oyl")
 offset = Vector2(320, -240)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky2_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("8_d41h0")
 offset = Vector2(320, -720)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky2_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("8_d41h0")
 offset = Vector2(320, -720)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky2_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("8_d41h0")
 offset = Vector2(320, -720)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky3_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("9_yrmrf")
 offset = Vector2(320, -1200)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky3_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("9_yrmrf")
 offset = Vector2(320, -1200)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky3_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("9_yrmrf")
 offset = Vector2(320, -1200)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky4_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("10_peih6")
 offset = Vector2(320, -1680)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky4_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("10_peih6")
 offset = Vector2(320, -1680)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky4_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("10_peih6")
 offset = Vector2(320, -1680)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky5_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("11_qngac")
 offset = Vector2(320, -2160)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky5_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("11_qngac")
 offset = Vector2(320, -2160)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky5_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("11_qngac")
 offset = Vector2(320, -2160)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky6_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("12_7x7io")
 offset = Vector2(320, -2640)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky6_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("12_7x7io")
 offset = Vector2(320, -2640)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky6_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("12_7x7io")
 offset = Vector2(320, -2640)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky7_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("13_6h2da")
 offset = Vector2(320, -3120)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky7_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("13_6h2da")
 offset = Vector2(320, -3120)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky7_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("13_6h2da")
 offset = Vector2(320, -3120)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky8_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("14_f0jb2")
 offset = Vector2(320, -3600)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky8_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("14_f0jb2")
 offset = Vector2(320, -3600)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky8_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("14_f0jb2")
 offset = Vector2(320, -3600)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky9_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("15_trgck")
 offset = Vector2(320, -4080)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky9_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("15_trgck")
 offset = Vector2(320, -4080)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky9_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("15_trgck")
 offset = Vector2(320, -4080)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky10_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("16_euopy")
 offset = Vector2(320, -4560)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky10_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("16_euopy")
 offset = Vector2(320, -4560)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky10_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("16_euopy")
 offset = Vector2(320, -4560)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky11_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("17_1h1sc")
 offset = Vector2(320, -5040)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky11_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("17_1h1sc")
 offset = Vector2(320, -5040)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky11_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("17_1h1sc")
 offset = Vector2(320, -5040)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky12_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("18_xan2x")
 offset = Vector2(320, -5520)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky12_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("18_xan2x")
 offset = Vector2(320, -5520)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky12_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("18_xan2x")
 offset = Vector2(320, -5520)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky13_1" type="Sprite2D" parent="BackgroundHolder"]
 texture = ExtResource("19_rc0yk")
 offset = Vector2(320, -6000)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky13_2" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(640, 0)
 texture = ExtResource("19_rc0yk")
 offset = Vector2(320, -6000)
-script = ExtResource("7_0fyyp")
 
 [node name="Sky13_3" type="Sprite2D" parent="BackgroundHolder"]
 position = Vector2(1280, 0)
 texture = ExtResource("19_rc0yk")
 offset = Vector2(320, -6000)
-script = ExtResource("7_0fyyp")
 
 [node name="BionicArm" type="Sprite2D" parent="."]
 position = Vector2(339, 392)

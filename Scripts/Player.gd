@@ -1,8 +1,9 @@
 extends Node
 
 var index: int = 0
+var power: int = 0
 
-var arrows = [$InputArrow, $InputArrow2, $InputArrow3, $InputArrow4]
+@onready var arrows = [$InputArrow, $InputArrow2, $InputArrow3, $InputArrow4]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,11 +28,20 @@ func _process(delta):
 func ShuffleArrows():
 	for arrow in arrows:
 		arrow.shuffle()
+	index = 0
 		
 
 func CheckCurrentArrow(value):
 	if(arrows[index].direction == value):
-		arrows[index].success()
+		arrows[index].correct()
 		index += 1
 	else:
 		arrows[index].failed()
+		ShuffleArrows()
+		
+	if(index > 3):
+		FinishedSequence()
+		
+func FinishedSequence():
+	power += 1
+	ShuffleArrows()
