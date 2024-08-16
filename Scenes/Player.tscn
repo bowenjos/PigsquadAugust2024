@@ -1,21 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://mgvjefhwpi7c"]
+[gd_scene load_steps=4 format=3 uid="uid://mgvjefhwpi7c"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_d4bdc"]
 [ext_resource type="PackedScene" uid="uid://d1kfnderm0gp7" path="res://Scenes/InputArrow.tscn" id="1_x0wry"]
+[ext_resource type="Texture2D" uid="uid://7fjg3rm24s7b" path="res://Art/BionicArm.png" id="2_hhbbw"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_d4bdc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BionicArm" type="Sprite2D" parent="."]
+position = Vector2(339, 392)
+texture = ExtResource("2_hhbbw")
 
 [node name="InputArrow" parent="." instance=ExtResource("1_x0wry")]
-position = Vector2(179, 130)
+position = Vector2(142, 542)
 
 [node name="InputArrow2" parent="." instance=ExtResource("1_x0wry")]
-position = Vector2(274, 129)
+position = Vector2(237, 541)
 
 [node name="InputArrow3" parent="." instance=ExtResource("1_x0wry")]
-position = Vector2(369, 128)
+position = Vector2(332, 540)
 
 [node name="InputArrow4" parent="." instance=ExtResource("1_x0wry")]
-position = Vector2(472, 127)
+position = Vector2(435, 539)
