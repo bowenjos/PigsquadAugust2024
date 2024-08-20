@@ -61,3 +61,4 @@ func CheckCurrentArrow(value):
 func FinishedSequence():
 	power += 1
 	ShuffleArrows()
+	$CompletedSequence.DisplayGraphic()
