@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://detg57w1ysds8"]
+[gd_scene load_steps=24 format=3 uid="uid://detg57w1ysds8"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_ah28k"]
 [ext_resource type="Texture2D" uid="uid://kswsb0xkeaw7" path="res://Art/ShotputStart.png" id="1_l10wb"]
 [ext_resource type="PackedScene" uid="uid://b54ha8ps4qtx7" path="res://Scenes/arena.tscn" id="2_wwqv8"]
 [ext_resource type="PackedScene" uid="uid://r66rhh3nkxrp" path="res://Scenes/shot_put.tscn" id="3_7735l"]
+[ext_resource type="Script" path="res://Scripts/StartingZone.gd" id="4_ktl4v"]
 [ext_resource type="Script" path="res://Scripts/BackGround.gd" id="4_s8yry"]
 [ext_resource type="Texture2D" uid="uid://byv0gd8tnb885" path="res://Art/Sky1.png" id="6_w7oyl"]
 [ext_resource type="Texture2D" uid="uid://ptfds5xc28ac" path="res://Art/Sky2.png" id="8_d41h0"]
@@ -37,7 +38,7 @@ position = Vector2(1280, 0)
 [node name="StartingZone" type="Sprite2D" parent="."]
 texture = ExtResource("1_l10wb")
 offset = Vector2(320, 240)
-script = ExtResource("4_s8yry")
+script = ExtResource("4_ktl4v")
 
 [node name="ShotPut" parent="." instance=ExtResource("3_7735l")]
 z_index = 1
@@ -291,3 +292,6 @@ theme_override_font_sizes/font_size = 64
 text = "30"
 
 [node name="RemainingTimer" type="Timer" parent="."]
+
+[connection signal="stop_motion" from="ShotPut" to="." method="_on_shot_put_stop_motion"]
+[connection signal="try_launch" from="Player" to="ShotPut" method="_on_player_try_launch"]

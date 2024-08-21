@@ -10,10 +10,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func reset():
+	self.texture = load("res://Art/Arrow.png")
 
 func shuffle():
-	self.texture = load("res://Art/Arrow.png")
-	
 	var rng = RandomNumberGenerator.new()
 	direction = rng.randi_range(0, 3)
 	
@@ -25,6 +26,8 @@ func shuffle():
 		self.rotation = -PI/2
 	elif(direction == 3):
 		self.rotation = PI/2
+		
+	reset()
 		
 func correct():
 	self.texture = load("res://Art/ArrowGreen.png")
