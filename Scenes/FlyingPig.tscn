@@ -6,6 +6,7 @@
 
 [node name="PigSprite" type="Sprite2D"]
 texture = ExtResource("1_gb0gm")
+offset = Vector2(0, -1680)
 script = ExtResource("2_81mkw")
 
 [node name="Oink" type="AudioStreamPlayer2D" parent="."]
