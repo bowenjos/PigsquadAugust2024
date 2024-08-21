@@ -1,15 +1,22 @@
 extends Node
 
-
+@onready var Counter = $CanvasLayer/Counter
+@onready var remainingTimer = $RemainingTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$ShotPut.launch(Vector2(2400, -236000))
+	remainingTimer.start(30)
+	$Music.play()
 	pass
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(remainingTimer.get_time_left() > 10):
+		Counter.text = str(snapped(remainingTimer.get_time_left(), 0.1))
+	else:
+		Counter.text = str(snapped(remainingTimer.get_time_left(), 0.01))
 	$Ground1.speed = $ShotPut.m_groundSpeed
 	$Ground2.speed = $ShotPut.m_groundSpeed
 	$Ground3.speed = $ShotPut.m_groundSpeed
@@ -54,3 +61,4 @@ func _process(delta):
 	$BackgroundHolder/Sky13_3.speed = $ShotPut.m_groundSpeed
 	$StartingZone.speed = $ShotPut.m_groundSpeed
 	pass
+	

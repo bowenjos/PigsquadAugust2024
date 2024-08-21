@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://detg57w1ysds8"]
+[gd_scene load_steps=23 format=3 uid="uid://detg57w1ysds8"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_ah28k"]
 [ext_resource type="Texture2D" uid="uid://kswsb0xkeaw7" path="res://Art/ShotputStart.png" id="1_l10wb"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://dhal1xxk2qu7q" path="res://Art/Sky13.png" id="19_rc0yk"]
 [ext_resource type="PackedScene" uid="uid://mgvjefhwpi7c" path="res://Scenes/Player.tscn" id="20_gxjjk"]
 [ext_resource type="Texture2D" uid="uid://duyofvvt6ay7v" path="res://Art/ShotBot.png" id="21_lo4on"]
+[ext_resource type="AudioStream" uid="uid://cljvca7li7bxn" path="res://Sounds/charging.wav" id="21_xi6nl"]
+[ext_resource type="FontFile" uid="uid://byyk0vwnw3oyf" path="res://Font/Smart 9h.ttf" id="22_dl5mx"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_ah28k")
@@ -270,3 +272,22 @@ position = Vector2(301, 335)
 texture = ExtResource("21_lo4on")
 
 [node name="Player" parent="." instance=ExtResource("20_gxjjk")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_xi6nl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Counter" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.84
+anchor_top = 0.8
+anchor_right = 0.84
+anchor_bottom = 0.8
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("22_dl5mx")
+theme_override_font_sizes/font_size = 64
+text = "30"
+
+[node name="RemainingTimer" type="Timer" parent="."]
