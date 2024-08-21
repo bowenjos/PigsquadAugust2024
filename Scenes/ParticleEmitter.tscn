@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8glnwqy4qk61"]
+
+[ext_resource type="Texture2D" uid="uid://dl65d66k8he20" path="res://Art/ShotputLand.png" id="1_phctm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1p1rj"]
+
+[node name="Node2D" type="GPUParticles2D"]
+position = Vector2(100, 100)
+process_material = SubResource("ShaderMaterial_1p1rj")
+texture = ExtResource("1_phctm")
