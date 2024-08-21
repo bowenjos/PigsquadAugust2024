@@ -61,4 +61,6 @@ func _process(delta):
 	$BackgroundHolder/Sky13_3.speed = $ShotPut.m_groundSpeed
 	$StartingZone.speed = $ShotPut.m_groundSpeed
 	pass
-	
+
+func _on_shot_put_stop_motion():
+	pass # Replace with function body.
