@@ -6,6 +6,7 @@ var power: int = 0
 @onready var arrows = [$BionicArm/InputArrow, $BionicArm/InputArrow2, $BionicArm/InputArrow3, $BionicArm/InputArrow4]
 
 var throwing: bool = false
+var thrown: bool = false
 
 var armRef: Sprite2D
 
@@ -17,14 +18,17 @@ signal try_launch(i_power: int, i_angle: float)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	index = 0
-	armRef = $ShotBotArm
+	armRef = $ShotBot/ShotBotArm
 	#armRef.process_mode = Node.PROCESS_MODE_DISABLED
+	$ShotBotStanding.visible = true
+	$Crouched.visible = false
+	$ShotBot.visible = false
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(!throwing):
+	if(!throwing && !thrown):
 		if(Input.is_action_just_pressed("UpInput")):
 			CheckCurrentArrow(0)
 		elif(Input.is_action_just_pressed("DownInput")):
@@ -34,9 +38,13 @@ func _process(delta):
 		elif(Input.is_action_just_pressed("RightInput")):
 			CheckCurrentArrow(3)
 		elif(Input.is_action_just_pressed("Throw")):
-			throwing = true
+			$BionicArm.visible = false
+			$ShotBotStanding.visible = false
+			$Crouched.visible = true
+			var timer = $Timer
+			timer.start()
 		pass
-	else:
+	elif(!thrown):
 		if(Input.is_action_just_released("Throw")):
 			throwing = false
 			Throw()
@@ -46,8 +54,10 @@ func _process(delta):
 		elif(rotationSwitch > 0 && armRef.rotation >= 0):
 			rotationSwitch = -1
 
+
+
 func Throw():
-	$BionicArm.visible = false
+	thrown = true
 	try_launch.emit(power, armRef.rotation)
 
 func ShuffleArrows():
@@ -76,3 +86,10 @@ func FinishedSequence():
 	power += 1
 	ShuffleArrows()
 	$CompletedSequence.DisplayGraphic()
+
+
+func _on_timer_timeout():
+	throwing = true
+	$Crouched.visible = false
+	$ShotBot.visible = true
+	pass # Replace with function body.

@@ -10,6 +10,7 @@ signal stop_motion
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	startingXPos = self.position.x
+	freeze = true
 	pass # Replace with function body.
 
 
@@ -31,6 +32,7 @@ func stop():
 	stop_motion.emit()
 
 func launch(i_force: Vector2):
+	freeze = false
 	#self.apply_force(Vector2(0, i_force.y))
 	self.linear_velocity.y = i_force.y
 	m_groundSpeed = i_force.x

@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://mgvjefhwpi7c"]
+[gd_scene load_steps=10 format=3 uid="uid://mgvjefhwpi7c"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_d4bdc"]
 [ext_resource type="PackedScene" uid="uid://d1kfnderm0gp7" path="res://Scenes/InputArrow.tscn" id="1_x0wry"]
 [ext_resource type="Texture2D" uid="uid://7fjg3rm24s7b" path="res://Art/BionicArm.png" id="2_hhbbw"]
-[ext_resource type="Texture2D" uid="uid://dywu1ptjnv85h" path="res://Art/ShotBotCharging.png" id="4_wuvhk"]
 [ext_resource type="Texture2D" uid="uid://cdit3fakswh2b" path="res://Art/ShotBotArm.png" id="5_on4yx"]
 [ext_resource type="Texture2D" uid="uid://biwc22erufxss" path="res://Art/Hammer.png" id="6_0l7ew"]
 [ext_resource type="Script" path="res://Scripts/CompletedSequence.gd" id="6_acvil"]
+[ext_resource type="Texture2D" uid="uid://duyofvvt6ay7v" path="res://Art/ShotBot.png" id="7_kxpfq"]
+[ext_resource type="Texture2D" uid="uid://d30n548nnq3ui" path="res://Art/ShotBotStanding.png" id="8_3injd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jq7s"]
+load_path = "res://.godot/imported/ShotBotCharging.png-3e181dbbf9d10fc5a7596f03974d36d8.ctex"
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_d4bdc")
@@ -28,11 +32,11 @@ position = Vector2(-7, 148)
 position = Vector2(96, 147)
 
 [node name="ShotBot" type="Sprite2D" parent="."]
-position = Vector2(300, 240)
-texture = ExtResource("4_wuvhk")
+position = Vector2(292, 324)
+texture = SubResource("CompressedTexture2D_4jq7s")
 
-[node name="ShotBotArm" type="Sprite2D" parent="."]
-position = Vector2(309, 216)
+[node name="ShotBotArm" type="Sprite2D" parent="ShotBot"]
+position = Vector2(9, -24)
 texture = ExtResource("5_on4yx")
 offset = Vector2(0, -2)
 
@@ -46,3 +50,15 @@ wait_time = 0.1
 autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CompletedSequence"]
+
+[node name="Crouched" type="Sprite2D" parent="."]
+position = Vector2(293, 325)
+texture = ExtResource("7_kxpfq")
+
+[node name="ShotBotStanding" type="Sprite2D" parent="."]
+position = Vector2(272, 325)
+texture = ExtResource("8_3injd")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
