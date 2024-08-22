@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://detg57w1ysds8"]
+[gd_scene load_steps=30 format=3 uid="uid://detg57w1ysds8"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_ah28k"]
 [ext_resource type="Texture2D" uid="uid://kswsb0xkeaw7" path="res://Art/ShotputStart.png" id="1_l10wb"]
@@ -23,10 +23,15 @@
 [ext_resource type="Texture2D" uid="uid://duyofvvt6ay7v" path="res://Art/ShotBot.png" id="21_lo4on"]
 [ext_resource type="AudioStream" uid="uid://cljvca7li7bxn" path="res://Sounds/charging.wav" id="21_xi6nl"]
 [ext_resource type="FontFile" uid="uid://byyk0vwnw3oyf" path="res://Font/Smart 9h.ttf" id="22_dl5mx"]
-[ext_resource type="Script" path="res://Scenes/PigSpawner.gd" id="24_5wml3"]
+[ext_resource type="Script" path="res://Scripts/PigSpawner.gd" id="24_5wml3"]
 [ext_resource type="PackedScene" uid="uid://c72ig403pt0ei" path="res://Scenes/FlyingPig.tscn" id="25_ralfi"]
+[ext_resource type="Script" path="res://Scripts/BirdCall.gd" id="26_o1vko"]
+[ext_resource type="AudioStream" uid="uid://bkw8lbprqmh5f" path="res://Sounds/birds.wav" id="27_8gpj0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l24pw"]
+size = Vector2(500, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t44l"]
 size = Vector2(500, 20)
 
 [node name="GameScene" type="Node2D"]
@@ -312,8 +317,21 @@ shape = SubResource("RectangleShape2D_l24pw")
 offset = Vector2(320, -1680)
 flip_h = true
 
+[node name="BirdCall" type="Node2D" parent="."]
+script = ExtResource("26_o1vko")
+
+[node name="Area2D" type="Area2D" parent="BirdCall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdCall/Area2D"]
+position = Vector2(320, -600)
+shape = SubResource("RectangleShape2D_8t44l")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BirdCall"]
+stream = ExtResource("27_8gpj0")
+
 [connection signal="stop_motion" from="ShotPut" to="." method="_on_shot_put_stop_motion"]
 [connection signal="try_launch" from="Player" to="ShotPut" method="_on_player_try_launch"]
 [connection signal="area_entered" from="PigSpawner/Area2D" to="PigSpawner" method="_on_area_2d_area_entered"]
 [connection signal="area_shape_entered" from="PigSpawner/Area2D" to="PigSpawner" method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="PigSpawner/Area2D" to="PigSpawner" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="BirdCall/Area2D" to="BirdCall" method="_on_area_2d_body_entered"]
