@@ -20,8 +20,8 @@ func _ready():
 	index = 0
 	armRef = $ShotBot/ShotBotArm
 	#armRef.process_mode = Node.PROCESS_MODE_DISABLED
-	$ShotBotStanding.visible = true
-	$Crouched.visible = false
+	$ShotBotStanding.visible = false
+	$Crouched.visible = true
 	$ShotBot.visible = false
 	pass # Replace with function body.
 
@@ -39,8 +39,8 @@ func _process(delta):
 			CheckCurrentArrow(3)
 		elif(Input.is_action_just_pressed("Throw")):
 			$BionicArm.visible = false
-			$ShotBotStanding.visible = false
-			$Crouched.visible = true
+			$ShotBotStanding.visible = true
+			$Crouched.visible = false
 			var timer = $Timer
 			timer.start()
 		pass
@@ -91,5 +91,6 @@ func FinishedSequence():
 func _on_timer_timeout():
 	throwing = true
 	$Crouched.visible = false
+	$ShotBotStanding.visible = false
 	$ShotBot.visible = true
 	pass # Replace with function body.
