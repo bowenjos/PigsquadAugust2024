@@ -5,6 +5,11 @@ var startingXPos: float = 0
 var m_groundSpeed: float = 0
 var distanceTraveled: float = 0
 
+var falling: bool = false
+var stopped: bool = false
+
+var emitter = preload("res://Scenes/ParticleEmitter.tscn")
+
 signal stop_motion
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +22,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	distanceTraveled += m_groundSpeed * delta
+	if(self.linear_velocity.y < 0):
+		falling = true
+		print("falling")
+	if(falling && self.linear_velocity.y == 0 && !stopped):
+		stop()
 
 func _physics_process(delta):
 	self.position.x = startingXPos
@@ -27,7 +37,11 @@ func _physics_process(delta):
 		
 
 func stop():
+	stopped = true
+	var dustCloud = emitter.instantiate()
+	add_child(dustCloud)
 	self.linear_velocity.y = 0
+	$AnimatedSprite2D.texture = load("res://Art/ShotputLand.png")
 	m_groundSpeed = 0
 	stop_motion.emit()
 
@@ -46,8 +60,8 @@ func try_launch(i_power: int, i_angle: float):
 
 func _on_player_try_launch(i_power, i_angle):
 	var vec: Vector2 = Vector2(cos(i_angle), sin(i_angle))
-	vec.y *= i_power*100
-	vec.x *= i_power*100
+	vec.y *= i_power*200
+	vec.x *= i_power*200
 	launch(vec)
 
 

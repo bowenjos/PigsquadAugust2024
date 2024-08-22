@@ -1,25 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8glnwqy4qk61"]
+[gd_scene load_steps=5 format=3 uid="uid://c8glnwqy4qk61"]
 
 [ext_resource type="Texture2D" uid="uid://cc5okie40hoj6" path="res://Art/Deust.png" id="1_anx3w"]
 [ext_resource type="AudioStream" uid="uid://du017bjb7vyur" path="res://Sounds/crash.mp3" id="2_cnmni"]
+[ext_resource type="Script" path="res://Scripts/ParticleEmitter.gd" id="2_sxied"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gj2a"]
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 60.674
-initial_velocity_min = 144.83
-initial_velocity_max = 144.83
+initial_velocity_min = 257.19
+initial_velocity_max = 257.19
 gravity = Vector3(0, 10, 0)
 
 [node name="Dust" type="GPUParticles2D"]
 emitting = false
-amount = 30
+amount = 60
 process_material = SubResource("ParticleProcessMaterial_8gj2a")
 texture = ExtResource("1_anx3w")
-lifetime = 0.5
+lifetime = 0.1
 one_shot = true
+script = ExtResource("2_sxied")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_cnmni")
+volume_db = -26.234
