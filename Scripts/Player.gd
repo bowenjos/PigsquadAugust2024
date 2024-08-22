@@ -1,8 +1,13 @@
 extends Node
 
 var index: int = 0
-var power: int = 0
+var power: int = 1
 
+@onready var shotBotRef = $ShotBot
+var move: bool = 0
+var speed: float = 0
+
+@onready var timer = $Timer
 @onready var arrows = [$BionicArm/InputArrow, $BionicArm/InputArrow2, $BionicArm/InputArrow3, $BionicArm/InputArrow4]
 
 var throwing: bool = false
@@ -28,6 +33,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	shotBotRef.position.x -= speed*delta
+	if(shotBotRef.position.x < -1000):
+		shotBotRef.process_mode = Node.PROCESS_MODE_DISABLED
 	if(!throwing && !thrown):
 		if(Input.is_action_just_pressed("UpInput")):
 			CheckCurrentArrow(0)
@@ -41,8 +49,12 @@ func _process(delta):
 			$BionicArm.visible = false
 			$ShotBotStanding.visible = true
 			$Crouched.visible = false
-			var timer = $Timer
 			timer.start()
+		elif(Input.is_action_just_released("Throw")):
+			throwing = false
+			power = 1
+			timer.stop()
+			Throw()
 		pass
 	elif(!thrown):
 		if(Input.is_action_just_released("Throw")):
@@ -59,6 +71,8 @@ func _process(delta):
 func Throw():
 	thrown = true
 	try_launch.emit(power, armRef.rotation)
+	speed = -cos(armRef.rotation)*power*200
+	move = true
 
 func ShuffleArrows():
 	var rng = RandomNumberGenerator.new()

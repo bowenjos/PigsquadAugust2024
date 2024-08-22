@@ -17,6 +17,8 @@ func _process(delta):
 		Counter.text = str(snapped(remainingTimer.get_time_left(), 0.1))
 	else:
 		Counter.text = str(snapped(remainingTimer.get_time_left(), 0.01))
+		
+	$Player.speed = $ShotPut.m_groundSpeed
 	$Ground1.speed = $ShotPut.m_groundSpeed
 	$Ground2.speed = $ShotPut.m_groundSpeed
 	$Ground3.speed = $ShotPut.m_groundSpeed
