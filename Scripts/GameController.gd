@@ -61,6 +61,15 @@ func _process(delta):
 	$BackgroundHolder/Sky13_1.speed = $ShotPut.m_groundSpeed
 	$BackgroundHolder/Sky13_2.speed = $ShotPut.m_groundSpeed
 	$BackgroundHolder/Sky13_3.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_1.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_2.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_3.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_4.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_5.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_6.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_7.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_8.speed = $ShotPut.m_groundSpeed
+	$BackgroundHolder/Sky14_9.speed = $ShotPut.m_groundSpeed
 	$StartingZone.speed = $ShotPut.m_groundSpeed
 	pass
 

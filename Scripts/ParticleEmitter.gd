@@ -1,8 +1,12 @@
 extends GPUParticles2D
 
+var newAmount = 10
+var newLifetime = 0.05
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+
+func Fire():
+	self.amount = newAmount
+	self.lifetime = newLifetime
 	self.emitting = true
 	self.one_shot = true
 	$AudioStreamPlayer2D.play()

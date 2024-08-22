@@ -8,6 +8,8 @@ var distanceTraveled: float = 0
 var falling: bool = false
 var stopped: bool = false
 
+var power: int = 0
+
 var emitter = preload("res://Scenes/ParticleEmitter.tscn")
 
 signal stop_motion
@@ -22,7 +24,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	distanceTraveled += m_groundSpeed * delta
-	if(self.linear_velocity.y < 0):
+	if(!falling && self.linear_velocity.y < 0):
 		falling = true
 		print("falling")
 	if(falling && self.linear_velocity.y == 0 && !stopped):
@@ -40,6 +42,9 @@ func stop():
 	stopped = true
 	var dustCloud = emitter.instantiate()
 	add_child(dustCloud)
+	dustCloud.newAmount = power*10
+	dustCloud.newLifetime = power*.03
+	dustCloud.Fire()
 	self.linear_velocity.y = 0
 	$AnimatedSprite2D.texture = load("res://Art/ShotputLand.png")
 	m_groundSpeed = 0
@@ -60,6 +65,7 @@ func try_launch(i_power: int, i_angle: float):
 
 func _on_player_try_launch(i_power, i_angle):
 	var vec: Vector2 = Vector2(cos(i_angle), sin(i_angle))
+	power = i_power
 	vec.y *= i_power*200
 	vec.x *= i_power*200
 	launch(vec)

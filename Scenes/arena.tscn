@@ -4,15 +4,15 @@
 [ext_resource type="Script" path="res://Scripts/BackGround.gd" id="2_hs0do"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk53u"]
-size = Vector2(640, 90)
+size = Vector2(640, 1000)
 
 [node name="Arena" type="Sprite2D"]
 texture = ExtResource("1_mbqxg")
-offset = Vector2(320, 240)
+offset = Vector2(320, 350)
 script = ExtResource("2_hs0do")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Node2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(320, 430)
+position = Vector2(320, 885)
 shape = SubResource("RectangleShape2D_fk53u")

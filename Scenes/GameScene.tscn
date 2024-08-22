@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://detg57w1ysds8"]
+[gd_scene load_steps=30 format=3 uid="uid://detg57w1ysds8"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_ah28k"]
 [ext_resource type="Texture2D" uid="uid://kswsb0xkeaw7" path="res://Art/ShotputStart.png" id="1_l10wb"]
@@ -19,11 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://cyse4at0chsg3" path="res://Art/Sky11.png" id="17_1h1sc"]
 [ext_resource type="Texture2D" uid="uid://dtfhfixwy3s73" path="res://Art/Sky12.png" id="18_xan2x"]
 [ext_resource type="Texture2D" uid="uid://dhal1xxk2qu7q" path="res://Art/Sky13.png" id="19_rc0yk"]
+[ext_resource type="Texture2D" uid="uid://dddqx5mxg8b8r" path="res://Art/Sky14.png" id="20_2cpmt"]
 [ext_resource type="PackedScene" uid="uid://mgvjefhwpi7c" path="res://Scenes/Player.tscn" id="20_gxjjk"]
 [ext_resource type="AudioStream" uid="uid://cljvca7li7bxn" path="res://Sounds/charging.wav" id="21_xi6nl"]
 [ext_resource type="FontFile" uid="uid://byyk0vwnw3oyf" path="res://Font/Smart 9h.ttf" id="22_dl5mx"]
 [ext_resource type="Script" path="res://Scripts/PigSpawner.gd" id="24_5wml3"]
-[ext_resource type="PackedScene" path="res://Scenes/FlyingPig.tscn" id="25_ralfi"]
+[ext_resource type="PackedScene" uid="uid://c72ig403pt0ei" path="res://Scenes/FlyingPig.tscn" id="25_ralfi"]
 [ext_resource type="Script" path="res://Scripts/BirdCall.gd" id="26_o1vko"]
 [ext_resource type="AudioStream" uid="uid://bkw8lbprqmh5f" path="res://Sounds/birds.wav" id="27_8gpj0"]
 
@@ -46,7 +47,7 @@ position = Vector2(619, 0)
 position = Vector2(1259, 0)
 
 [node name="StartingZone" type="Sprite2D" parent="."]
-position = Vector2(-14, 0)
+position = Vector2(-21, 0)
 texture = ExtResource("1_l10wb")
 offset = Vector2(320, 240)
 script = ExtResource("4_ktl4v")
@@ -291,6 +292,60 @@ texture = ExtResource("19_rc0yk")
 offset = Vector2(320, -6000)
 script = ExtResource("4_s8yry")
 
+[node name="Sky14_1" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(-21, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -6480)
+script = ExtResource("4_s8yry")
+
+[node name="Sky14_2" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(619, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -6480)
+script = ExtResource("4_s8yry")
+
+[node name="Sky14_3" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(1259, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -6480)
+script = ExtResource("4_s8yry")
+
+[node name="Sky14_4" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(-21, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -6960)
+script = ExtResource("4_s8yry")
+
+[node name="Sky14_5" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(619, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -6960)
+script = ExtResource("4_s8yry")
+
+[node name="Sky14_6" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(1259, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -6960)
+script = ExtResource("4_s8yry")
+
+[node name="Sky14_7" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(-21, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -7440)
+script = ExtResource("4_s8yry")
+
+[node name="Sky14_8" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(619, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -7440)
+script = ExtResource("4_s8yry")
+
+[node name="Sky14_9" type="Sprite2D" parent="BackgroundHolder"]
+position = Vector2(1259, 0)
+texture = ExtResource("20_2cpmt")
+offset = Vector2(320, -7440)
+script = ExtResource("4_s8yry")
+
 [node name="Player" parent="." instance=ExtResource("20_gxjjk")]
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
@@ -316,7 +371,7 @@ text = "30"
 script = ExtResource("24_5wml3")
 
 [node name="Area2D" type="Area2D" parent="PigSpawner"]
-position = Vector2(0, -1000)
+position = Vector2(0, -1200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PigSpawner/Area2D"]
 position = Vector2(320, 0)
