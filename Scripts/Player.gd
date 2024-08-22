@@ -4,6 +4,7 @@ var index: int = 0
 var power: int = 1
 
 @onready var shotBotRef = $ShotBot
+@onready var shotBotFallRef = $ShotBotFall
 var move: bool = 0
 var speed: float = 0
 
@@ -28,14 +29,17 @@ func _ready():
 	$ShotBotStanding.visible = false
 	$Crouched.visible = true
 	$ShotBot.visible = false
+	$ShotBotFall.visible = false
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	shotBotRef.position.x -= speed*delta
+	shotBotFallRef.position.x -= speed*delta
 	if(shotBotRef.position.x < -1000):
 		shotBotRef.process_mode = Node.PROCESS_MODE_DISABLED
+		shotBotFallRef.process_mode = Node.PROCESS_MODE_DISABLED
 	if(!throwing && !thrown):
 		if(Input.is_action_just_pressed("UpInput")):
 			CheckCurrentArrow(0)
@@ -54,6 +58,10 @@ func _process(delta):
 			throwing = false
 			power = 1
 			timer.stop()
+			$BionicArm.visible = false
+			$ShotBotStanding.visible = false
+			$Crouched.visible = false
+			$ShotBotFall.visible = true
 			Throw()
 		pass
 	elif(!thrown):
