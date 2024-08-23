@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/CompletedSequence.gd" id="6_acvil"]
 [ext_resource type="Texture2D" uid="uid://duyofvvt6ay7v" path="res://Art/ShotBot.png" id="7_kxpfq"]
 [ext_resource type="Texture2D" uid="uid://d30n548nnq3ui" path="res://Art/ShotBotStanding.png" id="8_3injd"]
-[ext_resource type="Texture2D" uid="uid://3ja7h2krvrff" path="res://Art/ShotBotFall.png" id="8_abkkt"]
+[ext_resource type="Texture2D" uid="uid://camxgf700dg6j" path="res://Art/ShotBotFall.png" id="8_abkkt"]
 [ext_resource type="FontFile" uid="uid://byyk0vwnw3oyf" path="res://Font/Smart 9h.ttf" id="9_08vsc"]
 [ext_resource type="PackedScene" uid="uid://c38uiv7eeruut" path="res://Scenes/ChargingMeter.tscn" id="11_uny7s"]
 
@@ -73,11 +73,13 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Label2" type="Label" parent="CanvasLayer2"]
-offset_right = 445.0
-offset_bottom = 131.0
+offset_left = 82.0
+offset_top = 2.0
+offset_right = 527.0
+offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("9_08vsc")
 theme_override_font_sizes/font_size = 64
-text = "Hold Space/A to start throwing"
+text = "Hold Space to start throwing"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
