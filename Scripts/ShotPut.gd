@@ -36,8 +36,9 @@ func _physics_process(delta):
 	self.position.x = startingXPos
 	self.linear_velocity.x = 0
 	
-	if(self.position.y >= 400):
-		m_groundSpeed = 0
+	if(self.position.y >= 385):
+		self.position.y = 385
+		stop()
 		
 		
 func Hide():
