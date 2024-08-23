@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://mgvjefhwpi7c" path="res://Scenes/Player.tscn" id="20_gxjjk"]
 [ext_resource type="AudioStream" uid="uid://cljvca7li7bxn" path="res://Sounds/charging.wav" id="21_xi6nl"]
 [ext_resource type="Script" path="res://Scripts/PigSpawner.gd" id="24_5wml3"]
-[ext_resource type="PackedScene" path="res://Scenes/FlyingPig.tscn" id="25_ralfi"]
+[ext_resource type="PackedScene" uid="uid://c72ig403pt0ei" path="res://Scenes/FlyingPig.tscn" id="25_ralfi"]
 [ext_resource type="Script" path="res://Scripts/BirdCall.gd" id="26_o1vko"]
 [ext_resource type="AudioStream" uid="uid://bkw8lbprqmh5f" path="res://Sounds/birds.wav" id="27_8gpj0"]
 
