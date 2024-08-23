@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://mgvjefhwpi7c"]
+[gd_scene load_steps=16 format=3 uid="uid://mgvjefhwpi7c"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_d4bdc"]
 [ext_resource type="PackedScene" uid="uid://d1kfnderm0gp7" path="res://Scenes/InputArrow.tscn" id="1_x0wry"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://camxgf700dg6j" path="res://Art/ShotBotFall.png" id="8_abkkt"]
 [ext_resource type="FontFile" uid="uid://byyk0vwnw3oyf" path="res://Font/Smart 9h.ttf" id="9_08vsc"]
 [ext_resource type="PackedScene" uid="uid://c38uiv7eeruut" path="res://Scenes/ChargingMeter.tscn" id="11_uny7s"]
+[ext_resource type="Texture2D" uid="uid://div4cd2ma1uth" path="res://Art/ShotBotFacepalm.png" id="14_ddyff"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jq7s"]
 load_path = "res://.godot/imported/ShotBotCharging.png-3e181dbbf9d10fc5a7596f03974d36d8.ctex"
@@ -21,6 +22,7 @@ load_path = "res://.godot/imported/ShotBotCharging.png-3e181dbbf9d10fc5a7596f039
 script = ExtResource("1_d4bdc")
 
 [node name="ShotBot" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(292, 324)
 texture = SubResource("CompressedTexture2D_4jq7s")
 
@@ -35,7 +37,6 @@ position = Vector2(8, -26)
 texture = ExtResource("3_5vqeg")
 
 [node name="Crouched" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(293, 325)
 texture = ExtResource("7_kxpfq")
 
@@ -53,7 +54,13 @@ visible = false
 position = Vector2(288, 317)
 texture = ExtResource("8_abkkt")
 
+[node name="ShotBotFacepalm" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(272, 325)
+texture = ExtResource("14_ddyff")
+
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CompletedSequence" type="Sprite2D" parent="."]
 z_index = 4
@@ -125,6 +132,7 @@ position = Vector2(-7, 148)
 position = Vector2(96, 147)
 
 [node name="RemainingTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="ChargingMeter" parent="." instance=ExtResource("11_uny7s")]
 position = Vector2(172, 214)
@@ -133,3 +141,4 @@ position = Vector2(172, 214)
 volume_db = -15.407
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RemainingTimer" to="." method="_on_remaining_timer_timeout"]

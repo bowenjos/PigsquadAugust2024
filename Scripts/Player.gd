@@ -18,6 +18,7 @@ var speed: float = 0
 @onready var Audio = $AudioStreamPlayer2D
 @onready var FailSFX = load("res://Sounds/pipe.mp3")
 
+var canThrow: bool = true
 var throwing: bool = false
 var charged: bool = false
 var thrown: bool = false
@@ -38,6 +39,7 @@ func _ready():
 	$Crouched.visible = true
 	$ShotBot.visible = false
 	$ShotBotFall.visible = false
+	$ShotBotFacepalm.visible = false
 	$RemainingTimer.start(30)
 	$ChargingMeter.visible = false
 	pass # Replace with function body.
@@ -60,52 +62,54 @@ func _process(delta):
 	if(shotBotRef.position.x < -1000):
 		shotBotRef.process_mode = Node.PROCESS_MODE_DISABLED
 		shotBotFallRef.process_mode = Node.PROCESS_MODE_DISABLED
-	if(!throwing && !thrown):
-		if(Input.is_action_just_pressed("UpInput")):
-			CheckCurrentArrow(0)
-		elif(Input.is_action_just_pressed("DownInput")):
-			CheckCurrentArrow(1)
-		elif(Input.is_action_just_pressed("LeftInput")):
-			CheckCurrentArrow(2)
-		elif(Input.is_action_just_pressed("RightInput")):
-			CheckCurrentArrow(3)
-		elif(Input.is_action_just_pressed("Throw")):
-			$CanvasLayer2/Label2.text = "Release to throw"
-			$CanvasLayer2/Label.visible = false
-			$CanvasLayer2/TimerLabel.visible = false
-			$BionicArm.visible = false
-			$ShotBotStanding.visible = true
-			$Crouched.visible = false
-			chargingMeterRef.visible = true
-			timer.start(m_chargeTime)
-		elif(!charged && Input.is_action_just_released("Throw")):
-			throwing = false
-			power = 1
-			timer.stop()
-			$BionicArm.visible = false
-			$ShotBotStanding.visible = false
-			$Crouched.visible = false
-			$ShotBotFall.visible = true
-			$CanvasLayer2/Label2.visible = false
-			chargingMeterRef.visible = false
-			Audio.stream = FailSFX
-			Audio.play()
-			Throw()
-		pass
-	elif(!thrown):
-		if(Input.is_action_just_released("Throw")):
-			throwing = false
-			$CanvasLayer2/Label2.visible = false
-			chargingMeterRef.visible = false
-			armRef.visible = false
-			armThrownRef.rotation = armRef.rotation
-			armThrownRef.visible = true
-			Throw()
-		armRef.rotation += armRoationSpeed * rotationSwitch * delta
-		if(rotationSwitch < 0 && armRef.rotation <= -PI/2):
-			rotationSwitch = 1
-		elif(rotationSwitch > 0 && armRef.rotation >= 0):
-			rotationSwitch = -1
+	if(canThrow):
+		if(!throwing && !thrown):
+			if(Input.is_action_just_pressed("UpInput")):
+				CheckCurrentArrow(0)
+			elif(Input.is_action_just_pressed("DownInput")):
+				CheckCurrentArrow(1)
+			elif(Input.is_action_just_pressed("LeftInput")):
+				CheckCurrentArrow(2)
+			elif(Input.is_action_just_pressed("RightInput")):
+				CheckCurrentArrow(3)
+			elif(Input.is_action_just_pressed("Throw")):
+				$CanvasLayer2/Label2.text = "Release to throw"
+				$CanvasLayer2/Label.visible = false
+				$BionicArm.visible = false
+				$ShotBotStanding.visible = true
+				$Crouched.visible = false
+				chargingMeterRef.visible = true
+				timer.start(m_chargeTime)
+			elif(!charged && Input.is_action_just_released("Throw")):
+				throwing = false
+				power = 1
+				timer.stop()
+				$BionicArm.visible = false
+				$ShotBotStanding.visible = false
+				$Crouched.visible = false
+				$ShotBotFall.visible = true
+				$CanvasLayer2/Label2.visible = false
+				chargingMeterRef.visible = false
+				Audio.stream = FailSFX
+				Audio.play()
+				$CanvasLayer2/TimerLabel.visible = false
+				Throw()
+			pass
+		elif(!thrown):
+			if(Input.is_action_just_released("Throw")):
+				throwing = false
+				$CanvasLayer2/Label2.visible = false
+				chargingMeterRef.visible = false
+				armRef.visible = false
+				armThrownRef.rotation = armRef.rotation
+				armThrownRef.visible = true
+				$CanvasLayer2/TimerLabel.visible = false
+				Throw()
+			armRef.rotation += armRoationSpeed * rotationSwitch * delta
+			if(rotationSwitch < 0 && armRef.rotation <= -PI/2):
+				rotationSwitch = 1
+			elif(rotationSwitch > 0 && armRef.rotation >= 0):
+				rotationSwitch = -1
 
 
 
@@ -114,6 +118,7 @@ func Throw():
 	try_launch.emit(power, armRef.rotation)
 	speed = -cos(armRef.rotation)*power*200
 	move = true
+	$RemainingTimer.stop()
 	
 
 
@@ -154,4 +159,24 @@ func _on_timer_timeout():
 	$ShotBotStanding.visible = false
 	$ShotBot.visible = true
 	charged = true
+	pass # Replace with function body.
+
+
+func _on_remaining_timer_timeout():
+	if(!thrown):
+		canThrow = false
+		
+		timer.stop()
+		
+		$ShotBotFacepalm.visible = true
+		$ShotBotStanding.visible = false
+		$Crouched.visible = false
+		$ShotBot.visible = false
+		$ShotBotFall.visible = false
+		
+		chargingMeterRef.visible = false
+		
+		Audio.stream = FailSFX
+		Audio.play()
+		
 	pass # Replace with function body.
