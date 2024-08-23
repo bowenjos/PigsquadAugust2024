@@ -15,6 +15,9 @@ var speed: float = 0
 
 @onready var chargingMeterRef = $ChargingMeter
 
+@onready var Audio = $AudioStreamPlayer2D
+@onready var FailSFX = load("res://Sounds/pipe.mp3")
+
 var throwing: bool = false
 var charged: bool = false
 var thrown: bool = false
@@ -75,7 +78,7 @@ func _process(delta):
 			$Crouched.visible = false
 			chargingMeterRef.visible = true
 			timer.start(m_chargeTime)
-		elif(Input.is_action_just_released("Throw")):
+		elif(!charged && Input.is_action_just_released("Throw")):
 			throwing = false
 			power = 1
 			timer.stop()
@@ -85,6 +88,8 @@ func _process(delta):
 			$ShotBotFall.visible = true
 			$CanvasLayer2/Label2.visible = false
 			chargingMeterRef.visible = false
+			Audio.stream = FailSFX
+			Audio.play()
 			Throw()
 		pass
 	elif(!thrown):
