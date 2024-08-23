@@ -36,8 +36,8 @@ func _physics_process(delta):
 	self.position.x = startingXPos
 	self.linear_velocity.x = 0
 	
-	if(self.position.y >= 385):
-		self.position.y = 385
+	if(self.position.y > 385):
+		self.position.y = 380
 		stop()
 		
 		
@@ -57,6 +57,7 @@ func stop():
 	self.linear_velocity.y = 0
 	$AnimatedSprite2D.texture = load("res://Art/ShotputLand.png")
 	m_groundSpeed = 0
+	freeze = true
 	stop_motion.emit()
 
 func launch(i_force: Vector2):

@@ -84,11 +84,15 @@ func _process(delta):
 				throwing = false
 				power = 1
 				timer.stop()
+				
 				$BionicArm.visible = false
 				$ShotBotStanding.visible = false
 				$Crouched.visible = false
 				$ShotBotFall.visible = true
 				$CanvasLayer2/Label2.visible = false
+				
+				armRef.rotation = -PI/4
+				
 				chargingMeterRef.visible = false
 				Audio.stream = FailSFX
 				Audio.play()
