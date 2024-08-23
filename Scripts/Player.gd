@@ -5,6 +5,8 @@ var power: int = 1
 
 var m_chargeTime: float = 1
 
+var m_coyoteTime: float = 0.5
+
 @onready var shotBotRef = $ShotBot
 @onready var shotBotFallRef = $ShotBotFall
 var move: bool = 0
@@ -168,6 +170,13 @@ func _on_timer_timeout():
 
 func _on_remaining_timer_timeout():
 	if(!thrown):
+		$RemainingCoyoteTimer.start(m_coyoteTime)
+		
+	pass # Replace with function body.
+
+
+func _on_remaining_coyote_timer_timeout():
+	if(!thrown):
 		canThrow = false
 		
 		timer.stop()
@@ -182,5 +191,4 @@ func _on_remaining_timer_timeout():
 		
 		Audio.stream = FailSFX
 		Audio.play()
-		
 	pass # Replace with function body.

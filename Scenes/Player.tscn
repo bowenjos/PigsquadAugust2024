@@ -134,6 +134,9 @@ position = Vector2(96, 147)
 [node name="RemainingTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="RemainingCoyoteTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="ChargingMeter" parent="." instance=ExtResource("11_uny7s")]
 position = Vector2(172, 214)
 
@@ -142,3 +145,4 @@ volume_db = -15.407
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="RemainingTimer" to="." method="_on_remaining_timer_timeout"]
+[connection signal="timeout" from="RemainingCoyoteTimer" to="." method="_on_remaining_coyote_timer_timeout"]
