@@ -3,6 +3,8 @@ extends Node
 var index: int = 0
 var power: int = 1
 
+var m_chargeTime: float = 1
+
 @onready var shotBotRef = $ShotBot
 @onready var shotBotFallRef = $ShotBotFall
 var move: bool = 0
@@ -11,7 +13,10 @@ var speed: float = 0
 @onready var timer = $Timer
 @onready var arrows = [$BionicArm/InputArrow, $BionicArm/InputArrow2, $BionicArm/InputArrow3, $BionicArm/InputArrow4]
 
+@onready var chargingMeterRef = $ChargingMeter
+
 var throwing: bool = false
+var charged: bool = false
 var thrown: bool = false
 
 var armRef: Sprite2D
@@ -31,6 +36,7 @@ func _ready():
 	$ShotBot.visible = false
 	$ShotBotFall.visible = false
 	$RemainingTimer.start(30)
+	$ChargingMeter.visible = false
 	pass # Replace with function body.
 
 
@@ -40,6 +46,11 @@ func _process(delta):
 		$CanvasLayer2/TimerLabel.text = str(snapped($RemainingTimer.get_time_left(), 0.1))
 	else:
 		$CanvasLayer2/TimerLabel.text = str(snapped($RemainingTimer.get_time_left(), 0.01))
+	
+	if(!charged && timer.time_left > 0):
+		chargingMeterRef.Update(m_chargeTime - timer.time_left)
+	elif(charged):
+		chargingMeterRef.Update(1)
 	
 	shotBotRef.position.x -= speed*delta
 	shotBotFallRef.position.x -= speed*delta
@@ -62,7 +73,8 @@ func _process(delta):
 			$BionicArm.visible = false
 			$ShotBotStanding.visible = true
 			$Crouched.visible = false
-			timer.start()
+			chargingMeterRef.visible = true
+			timer.start(m_chargeTime)
 		elif(Input.is_action_just_released("Throw")):
 			throwing = false
 			power = 1
@@ -72,11 +84,14 @@ func _process(delta):
 			$Crouched.visible = false
 			$ShotBotFall.visible = true
 			$CanvasLayer2/Label2.visible = false
+			chargingMeterRef.visible = false
 			Throw()
 		pass
 	elif(!thrown):
 		if(Input.is_action_just_released("Throw")):
 			throwing = false
+			$CanvasLayer2/Label2.visible = false
+			chargingMeterRef.visible = false
 			Throw()
 		armRef.rotation += armRoationSpeed * rotationSwitch * delta
 		if(rotationSwitch < 0 && armRef.rotation <= -PI/2):
@@ -127,4 +142,5 @@ func _on_timer_timeout():
 	$Crouched.visible = false
 	$ShotBotStanding.visible = false
 	$ShotBot.visible = true
+	charged = true
 	pass # Replace with function body.
