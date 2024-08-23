@@ -1,8 +1,5 @@
 extends Node
 
-@onready var Counter = $CanvasLayer/Counter
-@onready var remainingTimer = $RemainingTimer
-
 var shotPutSpeed: float = 0
 var shotPutDistanceTraveled: float = 0
 

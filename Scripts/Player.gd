@@ -138,6 +138,9 @@ func CheckCurrentArrow(value):
 		
 func FinishedSequence():
 	power += 1
+	$Crouched/Node2D.emitting = true
+	$Crouched/Node2D.amount = power*power
+	$Crouched/Node2D.lifetime = float(power)*.03
 	ShuffleArrows()
 	$CompletedSequence.DisplayGraphic()
 
