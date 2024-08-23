@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mgvjefhwpi7c"]
+[gd_scene load_steps=13 format=3 uid="uid://mgvjefhwpi7c"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_d4bdc"]
 [ext_resource type="PackedScene" uid="uid://d1kfnderm0gp7" path="res://Scenes/InputArrow.tscn" id="1_x0wry"]
@@ -8,8 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/CompletedSequence.gd" id="6_acvil"]
 [ext_resource type="Texture2D" uid="uid://duyofvvt6ay7v" path="res://Art/ShotBot.png" id="7_kxpfq"]
 [ext_resource type="Texture2D" uid="uid://d30n548nnq3ui" path="res://Art/ShotBotStanding.png" id="8_3injd"]
-[ext_resource type="Texture2D" uid="uid://3ja7h2krvrff" path="res://Art/ShotBotFall.png" id="8_abkkt"]
+[ext_resource type="Texture2D" uid="uid://camxgf700dg6j" path="res://Art/ShotBotFall.png" id="8_abkkt"]
 [ext_resource type="FontFile" uid="uid://byyk0vwnw3oyf" path="res://Font/Smart 9h.ttf" id="9_08vsc"]
+[ext_resource type="PackedScene" uid="uid://c38uiv7eeruut" path="res://Scenes/ChargingMeter.tscn" id="11_uny7s"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jq7s"]
 load_path = "res://.godot/imported/ShotBotCharging.png-3e181dbbf9d10fc5a7596f03974d36d8.ctex"
@@ -72,7 +73,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Label2" type="Label" parent="CanvasLayer2"]
-anchors_preset = -1
 offset_right = 445.0
 offset_bottom = 131.0
 theme_override_fonts/font = ExtResource("9_08vsc")
@@ -109,5 +109,8 @@ position = Vector2(-7, 148)
 position = Vector2(96, 147)
 
 [node name="RemainingTimer" type="Timer" parent="."]
+
+[node name="ChargingMeter" parent="." instance=ExtResource("11_uny7s")]
+position = Vector2(172, 214)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c38uiv7eeruut"]
+
+[ext_resource type="Script" path="res://Scripts/PowerMeter.gd" id="1_8y12x"]
+[ext_resource type="Texture2D" uid="uid://bmxq3r7ye4pwv" path="res://Art/whiteSquare.png" id="1_30ssh"]
+
+[node name="ChargingMeter" type="Node2D"]
+script = ExtResource("1_8y12x")
+
+[node name="MeterBorder" type="Sprite2D" parent="."]
+self_modulate = Color(0.35, 0.35, 0.35, 1)
+position = Vector2(113, 21)
+scale = Vector2(1, 0.168889)
+texture = ExtResource("1_30ssh")
+
+[node name="EmptyMeter" type="Sprite2D" parent="MeterBorder"]
+scale = Vector2(0.95, 0.8)
+texture = ExtResource("1_30ssh")
+
+[node name="PowerMeter" type="Sprite2D" parent="MeterBorder/EmptyMeter"]
+self_modulate = Color(1, 0.0784314, 0.133333, 1)
+position = Vector2(-115, 0)
+scale = Vector2(0.1, 1)
+texture = ExtResource("1_30ssh")
+offset = Vector2(115, 0)
