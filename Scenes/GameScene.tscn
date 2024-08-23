@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://mgvjefhwpi7c" path="res://Scenes/Player.tscn" id="20_gxjjk"]
 [ext_resource type="AudioStream" uid="uid://cljvca7li7bxn" path="res://Sounds/charging.wav" id="21_xi6nl"]
 [ext_resource type="Script" path="res://Scripts/PigSpawner.gd" id="24_5wml3"]
-[ext_resource type="PackedScene" path="res://Scenes/FlyingPig.tscn" id="25_ralfi"]
+[ext_resource type="PackedScene" uid="uid://c72ig403pt0ei" path="res://Scenes/FlyingPig.tscn" id="25_ralfi"]
 [ext_resource type="Script" path="res://Scripts/BirdCall.gd" id="26_o1vko"]
 [ext_resource type="FontFile" uid="uid://byyk0vwnw3oyf" path="res://Font/Smart 9h.ttf" id="27_6p6c0"]
 [ext_resource type="AudioStream" uid="uid://bkw8lbprqmh5f" path="res://Sounds/birds.wav" id="27_8gpj0"]
@@ -407,6 +407,7 @@ text = "Press R to Restart"
 horizontal_alignment = 1
 
 [connection signal="stop_motion" from="ShotPut" to="." method="_on_shot_put_stop_motion"]
+[connection signal="run_out_of_time" from="Player" to="." method="_on_player_run_out_of_time"]
 [connection signal="try_launch" from="Player" to="." method="_on_player_try_launch"]
 [connection signal="try_launch" from="Player" to="ShotPut" method="_on_player_try_launch"]
 [connection signal="area_entered" from="PigSpawner/Area2D" to="PigSpawner" method="_on_area_2d_area_entered"]

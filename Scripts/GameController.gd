@@ -80,3 +80,9 @@ func _on_shot_put_stop_motion():
 func _on_player_try_launch(i_power, i_angle):
 	$Music.stop()
 	$CanvasLayer/DistanceLabel.visible = true
+
+
+func _on_player_run_out_of_time():
+	$Music.stop()
+	$CanvasLayer/DistanceLabel.visible = true
+	$CanvasLayer/RestartLabel.visible = true

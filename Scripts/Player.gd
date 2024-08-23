@@ -32,6 +32,7 @@ var armRoationSpeed: float = 5.0
 var rotationSwitch: int = -1
 
 signal try_launch(i_power: int, i_angle: float)
+signal run_out_of_time()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -180,7 +181,10 @@ func _on_remaining_coyote_timer_timeout():
 		canThrow = false
 		
 		timer.stop()
+		run_out_of_time.emit()
 		
+		$CanvasLayer2.visible = false
+		$BionicArm.visible = false
 		$ShotBotFacepalm.visible = true
 		$ShotBotStanding.visible = false
 		$Crouched.visible = false
