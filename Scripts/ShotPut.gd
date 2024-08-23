@@ -18,6 +18,7 @@ signal stop_motion
 func _ready():
 	startingXPos = self.position.x
 	freeze = true
+	Hide()
 	pass # Replace with function body.
 
 
@@ -29,6 +30,7 @@ func _process(delta):
 		print("falling")
 	if(falling && self.linear_velocity.y == 0 && !stopped):
 		stop()
+		
 
 func _physics_process(delta):
 	self.position.x = startingXPos
@@ -37,6 +39,12 @@ func _physics_process(delta):
 	if(self.position.y >= 400):
 		m_groundSpeed = 0
 		
+		
+func Hide():
+	$AnimatedSprite2D.visible = false
+	
+func Show():
+	$AnimatedSprite2D.visible = true
 
 func stop():
 	stopped = true
@@ -55,6 +63,7 @@ func launch(i_force: Vector2):
 	#self.apply_force(Vector2(0, i_force.y))
 	self.linear_velocity.y = i_force.y
 	m_groundSpeed = i_force.x
+	Show()
 
 
 func try_launch(i_power: int, i_angle: float):

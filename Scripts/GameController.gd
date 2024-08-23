@@ -8,10 +8,12 @@ func _ready():
 	#$ShotPut.launch(Vector2(2400, -236000))
 	$Music.play()
 	pass
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(Input.is_action_just_pressed("Reset")):
+		get_tree().change_scene_to_file("res://Scenes/GameScene.tscn")
+	
 	$Player.speed = $ShotPut.m_groundSpeed
 	$Ground1.speed = $ShotPut.m_groundSpeed
 	$Ground2.speed = $ShotPut.m_groundSpeed
