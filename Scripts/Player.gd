@@ -22,7 +22,8 @@ var throwing: bool = false
 var charged: bool = false
 var thrown: bool = false
 
-var armRef: Sprite2D
+@onready var armRef: Sprite2D = $ShotBot/ShotBotArm
+@onready var armThrownRef: Sprite2D = $ShotBot/ShotBotArmThrow
 
 var armRoationSpeed: float = 5.0
 var rotationSwitch: int = -1
@@ -32,7 +33,6 @@ signal try_launch(i_power: int, i_angle: float)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	index = 0
-	armRef = $ShotBot/ShotBotArm
 	#armRef.process_mode = Node.PROCESS_MODE_DISABLED
 	$ShotBotStanding.visible = false
 	$Crouched.visible = true
@@ -97,6 +97,9 @@ func _process(delta):
 			throwing = false
 			$CanvasLayer2/Label2.visible = false
 			chargingMeterRef.visible = false
+			armRef.visible = false
+			armThrownRef.rotation = armRef.rotation
+			armThrownRef.visible = true
 			Throw()
 		armRef.rotation += armRoationSpeed * rotationSwitch * delta
 		if(rotationSwitch < 0 && armRef.rotation <= -PI/2):
