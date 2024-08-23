@@ -72,7 +72,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Label2" type="Label" parent="CanvasLayer2"]
-anchors_preset = -1
 offset_right = 445.0
 offset_bottom = 131.0
 theme_override_fonts/font = ExtResource("9_08vsc")
