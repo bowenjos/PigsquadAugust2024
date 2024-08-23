@@ -10,6 +10,7 @@ var shotPutDistanceTraveled: float = 0
 func _ready():
 	#$ShotPut.launch(Vector2(2400, -236000))
 	$Music.play()
+	$CanvasLayer/DistanceLabel.visible = false
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +20,7 @@ func _process(delta):
 	
 	shotPutSpeed = $ShotPut.m_groundSpeed
 	shotPutDistanceTraveled += shotPutSpeed*delta
+	$CanvasLayer/DistanceLabel.text = str(snapped(shotPutDistanceTraveled, 0.01))
 	$Player.speed = shotPutSpeed
 	$Ground1.speed = shotPutSpeed
 	$Ground2.speed = shotPutSpeed
@@ -75,8 +77,9 @@ func _process(delta):
 	pass
 
 func _on_shot_put_stop_motion():
-	pass # Replace with function body.
+	$CanvasLayer/RestartLabel.visible = true
 
 
 func _on_player_try_launch(i_power, i_angle):
 	$Music.stop()
+	$CanvasLayer/DistanceLabel.visible = true
