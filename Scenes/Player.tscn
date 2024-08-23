@@ -41,7 +41,8 @@ texture = ExtResource("8_abkkt")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CompletedSequence" type="Sprite2D" parent="."]
-position = Vector2(437, 492)
+z_index = 4
+position = Vector2(415, 492)
 texture = ExtResource("6_0l7ew")
 script = ExtResource("6_acvil")
 
@@ -59,12 +60,12 @@ anchor_left = 0.465
 anchor_top = 0.622
 anchor_right = 0.465
 anchor_bottom = 0.622
-offset_left = -109.6
-offset_top = 37.44
-offset_right = 105.4
-offset_bottom = 93.44
+offset_left = -171.6
+offset_top = 35.44
+offset_right = 120.4
+offset_bottom = 99.44
 theme_override_fonts/font = ExtResource("9_08vsc")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 64
 text = "Build POWER"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -72,24 +73,27 @@ uppercase = true
 
 [node name="Label2" type="Label" parent="CanvasLayer2"]
 anchors_preset = -1
-anchor_left = 0.472
-anchor_top = 0.619
-anchor_right = 0.472
-anchor_bottom = 0.619
-offset_left = -215.08
-offset_top = -281.12
-offset_right = 103.92
-offset_bottom = -186.12
+offset_right = 445.0
+offset_bottom = 131.0
 theme_override_fonts/font = ExtResource("9_08vsc")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 64
 text = "Hold Space/A to start throwing"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 uppercase = true
 
+[node name="TimerLabel" type="Label" parent="CanvasLayer2"]
+offset_left = 530.0
+offset_top = 396.0
+offset_right = 630.0
+offset_bottom = 460.0
+theme_override_fonts/font = ExtResource("9_08vsc")
+theme_override_font_sizes/font_size = 64
+text = "30.0"
+
 [node name="BionicArm" type="Sprite2D" parent="."]
-position = Vector2(341, 344)
+position = Vector2(320, 343)
 texture = ExtResource("2_hhbbw")
 
 [node name="InputArrow" parent="BionicArm" instance=ExtResource("1_x0wry")]
@@ -103,5 +107,7 @@ position = Vector2(-7, 148)
 
 [node name="InputArrow4" parent="BionicArm" instance=ExtResource("1_x0wry")]
 position = Vector2(96, 147)
+
+[node name="RemainingTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

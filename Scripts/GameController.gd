@@ -6,18 +6,12 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$ShotPut.launch(Vector2(2400, -236000))
-	remainingTimer.start(30)
 	$Music.play()
 	pass
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(remainingTimer.get_time_left() > 10):
-		Counter.text = str(snapped(remainingTimer.get_time_left(), 0.1))
-	else:
-		Counter.text = str(snapped(remainingTimer.get_time_left(), 0.01))
-		
 	$Player.speed = $ShotPut.m_groundSpeed
 	$Ground1.speed = $ShotPut.m_groundSpeed
 	$Ground2.speed = $ShotPut.m_groundSpeed
@@ -75,3 +69,7 @@ func _process(delta):
 
 func _on_shot_put_stop_motion():
 	pass # Replace with function body.
+
+
+func _on_player_try_launch(i_power, i_angle):
+	$Music.stop()

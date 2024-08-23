@@ -30,11 +30,17 @@ func _ready():
 	$Crouched.visible = true
 	$ShotBot.visible = false
 	$ShotBotFall.visible = false
+	$RemainingTimer.start(30)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if($RemainingTimer.get_time_left() > 10):
+		$CanvasLayer2/TimerLabel.text = str(snapped($RemainingTimer.get_time_left(), 0.1))
+	else:
+		$CanvasLayer2/TimerLabel.text = str(snapped($RemainingTimer.get_time_left(), 0.01))
+	
 	shotBotRef.position.x -= speed*delta
 	shotBotFallRef.position.x -= speed*delta
 	if(shotBotRef.position.x < -1000):
@@ -50,6 +56,9 @@ func _process(delta):
 		elif(Input.is_action_just_pressed("RightInput")):
 			CheckCurrentArrow(3)
 		elif(Input.is_action_just_pressed("Throw")):
+			$CanvasLayer2/Label2.text = "Release to throw"
+			$CanvasLayer2/Label.visible = false
+			$CanvasLayer2/TimerLabel.visible = false
 			$BionicArm.visible = false
 			$ShotBotStanding.visible = true
 			$Crouched.visible = false
@@ -62,6 +71,7 @@ func _process(delta):
 			$ShotBotStanding.visible = false
 			$Crouched.visible = false
 			$ShotBotFall.visible = true
+			$CanvasLayer2/Label2.visible = false
 			Throw()
 		pass
 	elif(!thrown):
@@ -81,6 +91,8 @@ func Throw():
 	try_launch.emit(power, armRef.rotation)
 	speed = -cos(armRef.rotation)*power*200
 	move = true
+	
+
 
 func ShuffleArrows():
 	var rng = RandomNumberGenerator.new()

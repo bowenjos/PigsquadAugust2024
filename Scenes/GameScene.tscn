@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://detg57w1ysds8"]
+[gd_scene load_steps=29 format=3 uid="uid://detg57w1ysds8"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_ah28k"]
 [ext_resource type="Texture2D" uid="uid://kswsb0xkeaw7" path="res://Art/ShotputStart.png" id="1_l10wb"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://dddqx5mxg8b8r" path="res://Art/Sky14.png" id="20_2cpmt"]
 [ext_resource type="PackedScene" uid="uid://mgvjefhwpi7c" path="res://Scenes/Player.tscn" id="20_gxjjk"]
 [ext_resource type="AudioStream" uid="uid://cljvca7li7bxn" path="res://Sounds/charging.wav" id="21_xi6nl"]
-[ext_resource type="FontFile" uid="uid://byyk0vwnw3oyf" path="res://Font/Smart 9h.ttf" id="22_dl5mx"]
 [ext_resource type="Script" path="res://Scripts/PigSpawner.gd" id="24_5wml3"]
 [ext_resource type="PackedScene" uid="uid://c72ig403pt0ei" path="res://Scenes/FlyingPig.tscn" id="25_ralfi"]
 [ext_resource type="Script" path="res://Scripts/BirdCall.gd" id="26_o1vko"]
@@ -39,12 +38,15 @@ script = ExtResource("1_ah28k")
 
 [node name="Ground1" parent="." instance=ExtResource("2_wwqv8")]
 position = Vector2(-21, 0)
+offset = Vector2(320, 350)
 
 [node name="Ground2" parent="." instance=ExtResource("2_wwqv8")]
 position = Vector2(619, 0)
+offset = Vector2(320, 350)
 
 [node name="Ground3" parent="." instance=ExtResource("2_wwqv8")]
 position = Vector2(1259, 0)
+offset = Vector2(320, 350)
 
 [node name="StartingZone" type="Sprite2D" parent="."]
 position = Vector2(-21, 0)
@@ -351,22 +353,6 @@ script = ExtResource("4_s8yry")
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_xi6nl")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Counter" type="Label" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.84
-anchor_top = 0.8
-anchor_right = 0.84
-anchor_bottom = 0.8
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("22_dl5mx")
-theme_override_font_sizes/font_size = 64
-text = "30"
-
-[node name="RemainingTimer" type="Timer" parent="."]
-
 [node name="PigSpawner" type="Node2D" parent="."]
 script = ExtResource("24_5wml3")
 
@@ -394,6 +380,7 @@ shape = SubResource("RectangleShape2D_8t44l")
 stream = ExtResource("27_8gpj0")
 
 [connection signal="stop_motion" from="ShotPut" to="." method="_on_shot_put_stop_motion"]
+[connection signal="try_launch" from="Player" to="." method="_on_player_try_launch"]
 [connection signal="try_launch" from="Player" to="ShotPut" method="_on_player_try_launch"]
 [connection signal="area_entered" from="PigSpawner/Area2D" to="PigSpawner" method="_on_area_2d_area_entered"]
 [connection signal="area_shape_entered" from="PigSpawner/Area2D" to="PigSpawner" method="_on_area_2d_area_shape_entered"]
